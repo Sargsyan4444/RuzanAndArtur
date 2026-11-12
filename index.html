@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ռուզաննա & Արթուր — Նշանադրություն</title>
+  <meta name="description" content="Սիրով հրավիրում ենք ձեզ մեր նշանադրության օրը՝ 17.12.2026">
+  <meta property="og:title" content="Ռուզաննա & Արթուր — Նշանադրություն">
+  <meta property="og:description" content="17.12.2026 · 17:30 · Նոր Սուրմալու">
+  <meta property="og:image" content="images/1.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Armenian:wght@300;400;500&family=Noto+Serif+Armenian:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+  <!-- Բացման էկրան -->
+  <section class="cover" id="cover">
+    <div class="cover-inner">
+      <p class="cover-small">Նշանադրություն</p>
+      <h1 class="cover-names">Ռուզաննա<span>&</span>Արթուր</h1>
+      <p class="cover-date">17 · 12 · 2026</p>
+      <button class="btn" id="openBtn" type="button">Բացել հրավիրատոմսը</button>
+    </div>
+  </section>
+
+  <!-- Երաժշտություն -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="Mihran_Tsarukyan_-_Yerkusov_(www.mexedi.am).mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn" id="musicBtn" type="button" aria-label="Երաժշտություն" hidden>
+    <span class="bars"><i></i><i></i><i></i></span>
+  </button>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero-img" src="images/1.jpg" alt="Ռուզաննա և Արթուր">
+      <div class="hero-shade"></div>
+      <div class="hero-text reveal">
+        <p class="eyebrow">Նշանադրություն</p>
+        <h2 class="names">Ռուզաննա <em>&</em> Արթուր</h2>
+        <p class="hero-date">17.12.2026 💍</p>
+      </div>
+      <div class="scroll-hint"><span></span></div>
+    </section>
+
+    <!-- Տեքստ -->
+    <section class="story">
+      <div class="container narrow reveal">
+        <p>Կան օրեր, որոնք պարզապես չեն գալիս ու անցնում… Դրանք մնում են սրտում՝ որպես կյանքի ամենաթանկ հիշողություններից մեկը։</p>
+        <p>Եվ մեր այդ օրը մոտենում է… 🤍</p>
+        <p>Մի գեղեցիկ պատմություն, երկու անուն ու մի նոր սկիզբ։</p>
+        <p class="signature">Ռուզաննա &amp; Արթուր</p>
+        <p class="invite">Սիրով հրավիրում ենք ձեզ մեզ հետ մեր կարևոր օրն անցկացնելու</p>
+      </div>
+    </section>
+
+    <!-- Նկար -->
+    <section class="photo-band">
+      <figure class="reveal"><img src="images/photo_2026-11-12_00-32-36.jpg" alt="Ռուզաննա և Արթուր" loading="lazy"></figure>
+    </section>
+
+    <!-- Հաշվիչ -->
+    <section class="countdown-sec">
+      <div class="container reveal">
+        <p class="eyebrow dark">Մինչև մեր օրը մնաց</p>
+        <div class="countdown" id="countdown">
+          <div><b id="cd-d">0</b><span>օր</span></div>
+          <div><b id="cd-h">0</b><span>ժամ</span></div>
+          <div><b id="cd-m">0</b><span>րոպե</span></div>
+          <div><b id="cd-s">0</b><span>վայրկյան</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Օրացույց -->
+    <section class="calendar-sec">
+      <div class="container narrow reveal">
+        <h3 class="sec-title">Դեկտեմբեր 2026</h3>
+        <div class="calendar" id="calendar"></div>
+        <p class="time">Ժամը <b>17:30</b></p>
+        <button class="btn btn-ghost" id="addCal" type="button">Ավելացնել օրացույցում</button>
+      </div>
+    </section>
+
+    <!-- Վայր -->
+    <section class="place-sec">
+      <div class="container narrow reveal">
+        <h3 class="sec-title">Վայրը</h3>
+        <p class="place-name">Նոր Սուրմալու</p>
+        <p class="place-sub">Ռեստորան</p>
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/place/%D5%B6%D5%B8%D6%80+%D5%BD%D5%B8%D6%82%D6%80%D5%B4%D5%A1%D5%AC%D5%B8%D6%82/data=!4m2!3m1!1s0x406ac10063a7b1e1:0xb7bafbb6179d284e?sa=X&ved=1t:242&ictx=111">Բացել քարտեզում</a>
+      </div>
+    </section>
+
+    <!-- Նկար 2 -->
+    <section class="photo-band light">
+      <figure class="reveal"><img src="images/photo_2026-11-07_16-27-49.jpg" alt="Երջանիկ պահեր" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/photo_2026-10-26_20-56-59 (2).jpg" alt="Երջանիկ պահեր" loading="lazy"></figure>
+    </section>
+
+    
+
+    <footer>
+      <p>Սիրով՝ Ռուզաննա &amp; Արթուր</p>
+      <p class="small">17.12.2026</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

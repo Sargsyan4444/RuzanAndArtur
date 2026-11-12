@@ -1,0 +1,194 @@
+:root{
+  --dusky-lilac:#88708E;
+  --iris-mist:#BAAAC8;
+  --plum-blossom:#D7C5D8;
+  --silver-wisteria:#DAD4DF;
+  --sandstone:#CBB9A4;
+  --oat:#E6DAC8;
+  --rose-wood:#A9777A;
+  --rose-tint:#D9BEBB;
+  --deep:#5A4862;
+  --ink:#4A3D50;
+  --serif:'Noto Serif Armenian','Cormorant Garamond',serif;
+  --sans:'Noto Sans Armenian',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--oat);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+.container{width:min(100% - 40px,960px);margin-inline:auto;position:relative;z-index:1}
+.narrow{width:min(100% - 40px,560px);text-align:center}
+
+/* ---------- Ծաղիկներ ---------- */
+.flora{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.fl{position:absolute;display:block;opacity:.8;transform:rotate(var(--r,0deg));
+  animation:sway var(--d,8s) ease-in-out infinite alternate;animation-delay:var(--dl,0s);transform-origin:50% 50%}
+@keyframes sway{
+  from{transform:rotate(calc(var(--r,0deg) - 7deg))}
+  to{transform:rotate(calc(var(--r,0deg) + 7deg))}
+}
+.petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.petal{position:absolute;top:-12%;display:block;opacity:0;
+  animation:fall var(--t,14s) linear infinite;animation-delay:var(--dl,0s)}
+@keyframes fall{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+  10%{opacity:.85}
+  50%{transform:translate3d(var(--x,30px),55vh,0) rotate(180deg)}
+  90%{opacity:.85}
+  100%{transform:translate3d(calc(var(--x,30px) * -1),115vh,0) rotate(360deg);opacity:0}
+}
+.flower-line{display:flex;justify-content:center;align-items:center;gap:10px;margin:-12px 0 26px}
+.flower-line::before,.flower-line::after{content:'';width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--rose-wood))}
+.flower-line::after{transform:scaleX(-1)}
+.flower-line svg{width:18px;height:18px;display:block}
+.flower-line svg:nth-child(2){width:26px;height:26px}
+
+/* ---------- Cover ---------- */
+.cover{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 14%,var(--plum-blossom) 0,transparent 48%),
+    radial-gradient(circle at 85% 80%,var(--rose-wood) 0,transparent 50%),
+    radial-gradient(circle at 80% 15%,var(--sandstone) 0,transparent 38%),
+    linear-gradient(160deg,var(--iris-mist),var(--dusky-lilac) 60%,var(--deep));
+  color:#fff;transition:transform 1s cubic-bezier(.7,0,.2,1),opacity 1s}
+.cover.open{transform:translateY(-100%);opacity:0;pointer-events:none}
+.cover-inner{padding:24px;position:relative;z-index:2}
+.cover-small{letter-spacing:.35em;text-transform:uppercase;font-size:.8rem;opacity:.9}
+.cover-names{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,9vw,4rem);line-height:1.2;margin:18px 0}
+.cover-names span{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.6em;margin:4px 0;color:var(--oat)}
+.cover-date{letter-spacing:.3em;margin-bottom:36px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-block;border:1px solid var(--dusky-lilac);background:var(--dusky-lilac);color:#fff;
+  padding:13px 30px;border-radius:40px;font:400 .95rem var(--sans);letter-spacing:.04em;cursor:pointer;
+  text-decoration:none;transition:.3s}
+.btn:hover{background:transparent;color:var(--dusky-lilac)}
+.cover .btn{background:rgba(255,255,255,.15);border-color:#fff;backdrop-filter:blur(6px)}
+.cover .btn:hover{background:#fff;color:var(--dusky-lilac)}
+.btn-ghost{background:transparent;color:var(--dusky-lilac)}
+.btn-ghost:hover{background:var(--dusky-lilac);color:#fff}
+
+/* ---------- Music ---------- */
+.music-btn{position:fixed;right:16px;bottom:16px;z-index:90;width:48px;height:48px;border-radius:50%;
+  border:none;background:var(--dusky-lilac);cursor:pointer;box-shadow:0 6px 20px rgba(74,61,80,.35)}
+.music-btn .bars{display:flex;gap:3px;align-items:flex-end;justify-content:center;height:18px}
+.music-btn .bars i{width:3px;height:6px;background:#fff;border-radius:2px}
+.music-btn.playing .bars i{animation:eq 1s infinite ease-in-out}
+.music-btn.playing .bars i:nth-child(2){animation-delay:.2s}
+.music-btn.playing .bars i:nth-child(3){animation-delay:.4s}
+@keyframes eq{0%,100%{height:5px}50%{height:18px}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:end center;text-align:center;color:#fff;overflow:hidden;background:#0b0912}
+.hero-img{position:absolute;inset:0;background-size:cover;background-position:center 25%}
+.hero-shade{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,9,18,.25) 0%,rgba(11,9,18,.1) 40%,rgba(74,61,80,.7) 78%,#5A4862 100%)}
+.hero-text{position:relative;z-index:2;padding:0 20px 90px}
+.eyebrow{letter-spacing:.35em;text-transform:uppercase;font-size:.78rem;color:var(--plum-blossom)}
+.eyebrow.dark{color:var(--dusky-lilac)}
+.names{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,8vw,4.2rem);line-height:1.25;margin:10px 0}
+.names em{font-family:'Cormorant Garamond',serif;color:var(--sandstone);padding:0 .1em}
+.hero-date{letter-spacing:.25em;font-size:1.1rem}
+.scroll-hint{position:absolute;z-index:2;bottom:26px;left:50%;width:22px;height:36px;border:1.5px solid rgba(255,255,255,.7);border-radius:14px;transform:translateX(-50%)}
+.scroll-hint span{position:absolute;top:6px;left:50%;width:3px;height:7px;margin-left:-1.5px;background:#fff;border-radius:2px;animation:scr 1.8s infinite}
+@keyframes scr{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* ---------- Story: #5A4862 → iris → plum → oat ---------- */
+.story{position:relative;overflow:hidden;padding:140px 0 100px;
+  background:
+    radial-gradient(circle at 90% 55%,rgba(169,119,122,.22),transparent 45%),
+    radial-gradient(circle at 8% 78%,rgba(203,185,164,.45),transparent 45%),
+    linear-gradient(180deg,#5A4862 0%,var(--iris-mist) 15%,var(--plum-blossom) 42%,var(--oat) 100%)}
+.story p{font-family:var(--serif);font-size:clamp(1.05rem,3.6vw,1.25rem);margin-bottom:28px}
+.story .signature{font-size:1.7rem;color:var(--dusky-lilac);margin-top:44px;margin-bottom:10px}
+.story .invite{font-size:1rem;color:var(--rose-wood);margin-top:20px}
+
+/* ---------- Photos: կամարաձև շրջանակ ---------- */
+.photo-band{position:relative;overflow:hidden;padding:70px 20px;
+  background:
+    radial-gradient(circle at 15% 25%,rgba(186,170,200,.5),transparent 45%),
+    radial-gradient(circle at 88% 80%,rgba(169,119,122,.25),transparent 45%),
+    linear-gradient(180deg,var(--oat),var(--plum-blossom))}
+.photo-band figure{position:relative;z-index:1;width:min(100%,400px);margin:0 auto;
+  border-radius:999px 999px 26px 26px;overflow:hidden;
+  box-shadow:0 0 0 8px rgba(255,255,255,.45),0 24px 60px rgba(74,61,80,.35)}
+.photo-band img{width:100%;height:auto;min-height:260px;object-fit:cover;background:#111}
+.photo-band.light{
+  background:
+    radial-gradient(circle at 85% 20%,rgba(215,197,216,.7),transparent 45%),
+    radial-gradient(circle at 10% 85%,rgba(203,185,164,.5),transparent 45%),
+    linear-gradient(180deg,var(--rose-tint) 0%,var(--iris-mist) 55%,var(--dusky-lilac) 100%)}
+.photo-band.light figure{width:min(100%,860px);border-radius:28px}
+
+/* ---------- Countdown: plum → iris → wisteria ---------- */
+.countdown-sec{position:relative;overflow:hidden;padding:90px 0;text-align:center;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(255,255,255,.4),transparent 40%),
+    linear-gradient(180deg,var(--plum-blossom) 0%,var(--iris-mist) 45%,var(--silver-wisteria) 100%)}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;max-width:520px;margin-inline:auto}
+.countdown div{background:rgba(255,255,255,.55);border-radius:18px;padding:18px 4px;backdrop-filter:blur(4px)}
+.countdown b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,7vw,2.6rem);color:var(--dusky-lilac);line-height:1.1}
+.countdown span{font-size:.78rem;letter-spacing:.08em;color:var(--ink)}
+
+/* ---------- Calendar: wisteria → oat ---------- */
+.calendar-sec{position:relative;overflow:hidden;padding:100px 0 90px;
+  background:
+    radial-gradient(circle at 12% 30%,rgba(215,197,216,.6),transparent 42%),
+    radial-gradient(circle at 92% 75%,rgba(203,185,164,.5),transparent 42%),
+    linear-gradient(180deg,var(--silver-wisteria),var(--oat))}
+.sec-title{font-family:var(--serif);font-weight:400;font-size:1.7rem;color:var(--dusky-lilac);margin-bottom:26px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;background:rgba(255,255,255,.55);padding:20px 14px;border-radius:22px;border:1px solid var(--sandstone)}
+.calendar .dow{font-size:.75rem;color:var(--rose-wood);letter-spacing:.04em;padding-bottom:6px}
+.calendar .day{aspect-ratio:1;display:grid;place-items:center;font-size:.95rem;border-radius:50%;position:relative}
+.calendar .day.target{background:var(--dusky-lilac);color:#fff;font-weight:500;animation:pulse 2.4s infinite}
+.calendar .day.target::after{content:'♥';position:absolute;top:-9px;right:-3px;font-size:.8rem;color:var(--rose-wood)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(136,112,142,.5)}70%,100%{box-shadow:0 0 0 14px rgba(136,112,142,0)}}
+.time{margin:26px 0 18px;font-family:var(--serif);font-size:1.25rem}
+.time b{color:var(--dusky-lilac);font-weight:600}
+
+/* ---------- Place: oat → sandstone → rose tint ---------- */
+.place-sec{position:relative;overflow:hidden;padding:90px 0;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(215,197,216,.55),transparent 42%),
+    radial-gradient(circle at 10% 90%,rgba(169,119,122,.25),transparent 45%),
+    linear-gradient(180deg,var(--oat) 0%,var(--sandstone) 55%,var(--rose-tint) 100%)}
+.place-name{font-family:var(--serif);font-size:2rem;color:var(--ink)}
+.place-sub{color:var(--rose-wood);letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;margin-bottom:26px}
+
+/* ---------- Footer: lilac → deep ---------- */
+footer{position:relative;overflow:hidden;text-align:center;padding:60px 20px 80px;color:#fff;
+  background:linear-gradient(180deg,var(--dusky-lilac),var(--deep))}
+footer p{position:relative;z-index:1;font-family:var(--serif);font-size:1.3rem}
+footer .small{font-size:.9rem;letter-spacing:.25em;opacity:.8;margin-top:6px}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation:none!important}
+  .petal{display:none}
+}
+
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+
+@media (max-width:768px){
+  .hero{display:block;min-height:0}
+  .hero-img{position:relative;inset:auto;height:auto;object-fit:initial;display:block}
+  .hero-text{position:absolute;left:0;right:0;bottom:0;padding:0 20px 70px}
+}
+
+.hero-text{position:relative;z-index:2;width:100%;padding:0 5vw clamp(56px,9vw,90px)}
+.eyebrow{letter-spacing:.3em;text-transform:uppercase;font-size:clamp(.62rem,2.4vw,.78rem);color:var(--plum-blossom)}
+.eyebrow.dark{color:var(--dusky-lilac)}
+.names{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,8.4vw,4.2rem);line-height:1.2;margin:.3em 0;text-wrap:balance;overflow-wrap:anywhere}
+.names em{font-family:'Cormorant Garamond',serif;color:var(--sandstone);padding:0 .1em}
+.hero-date{letter-spacing:.2em;font-size:clamp(.9rem,4vw,1.1rem)}
+
+@media (max-width:768px){
+  .hero{display:block;min-height:0}
+  .hero-img{position:relative;inset:auto;height:auto;object-fit:initial;display:block}
+  .hero-text{position:absolute;left:0;right:0;bottom:0;padding:0 5vw 14vw}
+  .scroll-hint{display:none}
+}
