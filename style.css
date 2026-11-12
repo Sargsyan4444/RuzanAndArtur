@@ -20,30 +20,6 @@ img{max-width:100%;display:block}
 .container{width:min(100% - 40px,960px);margin-inline:auto;position:relative;z-index:1}
 .narrow{width:min(100% - 40px,560px);text-align:center}
 
-/* ---------- Ծաղիկներ ---------- */
-.flora{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.fl{position:absolute;display:block;opacity:.8;transform:rotate(var(--r,0deg));
-  animation:sway var(--d,8s) ease-in-out infinite alternate;animation-delay:var(--dl,0s);transform-origin:50% 50%}
-@keyframes sway{
-  from{transform:rotate(calc(var(--r,0deg) - 7deg))}
-  to{transform:rotate(calc(var(--r,0deg) + 7deg))}
-}
-.petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
-.petal{position:absolute;top:-12%;display:block;opacity:0;
-  animation:fall var(--t,14s) linear infinite;animation-delay:var(--dl,0s)}
-@keyframes fall{
-  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
-  10%{opacity:.85}
-  50%{transform:translate3d(var(--x,30px),55vh,0) rotate(180deg)}
-  90%{opacity:.85}
-  100%{transform:translate3d(calc(var(--x,30px) * -1),115vh,0) rotate(360deg);opacity:0}
-}
-.flower-line{display:flex;justify-content:center;align-items:center;gap:10px;margin:-12px 0 26px}
-.flower-line::before,.flower-line::after{content:'';width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--rose-wood))}
-.flower-line::after{transform:scaleX(-1)}
-.flower-line svg{width:18px;height:18px;display:block}
-.flower-line svg:nth-child(2){width:26px;height:26px}
-
 /* ---------- Cover ---------- */
 .cover{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;overflow:hidden;
   background:
@@ -81,18 +57,26 @@ img{max-width:100%;display:block}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;display:grid;place-items:end center;text-align:center;color:#fff;overflow:hidden;background:#0b0912}
-.hero-img{position:absolute;inset:0;background-size:cover;background-position:center 25%}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .hero-shade{position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(11,9,18,.25) 0%,rgba(11,9,18,.1) 40%,rgba(74,61,80,.7) 78%,#5A4862 100%)}
-.hero-text{position:relative;z-index:2;padding:0 20px 90px}
-.eyebrow{letter-spacing:.35em;text-transform:uppercase;font-size:.78rem;color:var(--plum-blossom)}
+.hero-text{position:relative;z-index:2;width:100%;padding:0 5vw clamp(56px,9vw,90px)}
+.eyebrow{letter-spacing:.3em;text-transform:uppercase;font-size:clamp(.62rem,2.4vw,.78rem);color:var(--plum-blossom)}
 .eyebrow.dark{color:var(--dusky-lilac)}
-.names{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,8vw,4.2rem);line-height:1.25;margin:10px 0}
+.names{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,8.4vw,4.2rem);line-height:1.2;margin:.3em 0;text-wrap:balance;overflow-wrap:anywhere}
 .names em{font-family:'Cormorant Garamond',serif;color:var(--sandstone);padding:0 .1em}
-.hero-date{letter-spacing:.25em;font-size:1.1rem}
+.hero-date{letter-spacing:.2em;font-size:clamp(.9rem,4vw,1.1rem)}
 .scroll-hint{position:absolute;z-index:2;bottom:26px;left:50%;width:22px;height:36px;border:1.5px solid rgba(255,255,255,.7);border-radius:14px;transform:translateX(-50%)}
 .scroll-hint span{position:absolute;top:6px;left:50%;width:3px;height:7px;margin-left:-1.5px;background:#fff;border-radius:2px;animation:scr 1.8s infinite}
 @keyframes scr{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* Հեռախոս՝ առաջին նկարը ամբողջությամբ */
+@media (max-width:768px){
+  .hero{display:block;min-height:0}
+  .hero-img{position:relative;inset:auto;height:auto;object-fit:initial;display:block}
+  .hero-text{position:absolute;left:0;right:0;bottom:0;padding:0 5vw 14vw}
+  .scroll-hint{display:none}
+}
 
 /* ---------- Story: #5A4862 → iris → plum → oat ---------- */
 .story{position:relative;overflow:hidden;padding:140px 0 100px;
@@ -168,27 +152,4 @@ footer .small{font-size:.9rem;letter-spacing:.25em;opacity:.8;margin-top:6px}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
   *{animation:none!important}
-  .petal{display:none}
-}
-
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
-
-@media (max-width:768px){
-  .hero{display:block;min-height:0}
-  .hero-img{position:relative;inset:auto;height:auto;object-fit:initial;display:block}
-  .hero-text{position:absolute;left:0;right:0;bottom:0;padding:0 20px 70px}
-}
-
-.hero-text{position:relative;z-index:2;width:100%;padding:0 5vw clamp(56px,9vw,90px)}
-.eyebrow{letter-spacing:.3em;text-transform:uppercase;font-size:clamp(.62rem,2.4vw,.78rem);color:var(--plum-blossom)}
-.eyebrow.dark{color:var(--dusky-lilac)}
-.names{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,8.4vw,4.2rem);line-height:1.2;margin:.3em 0;text-wrap:balance;overflow-wrap:anywhere}
-.names em{font-family:'Cormorant Garamond',serif;color:var(--sandstone);padding:0 .1em}
-.hero-date{letter-spacing:.2em;font-size:clamp(.9rem,4vw,1.1rem)}
-
-@media (max-width:768px){
-  .hero{display:block;min-height:0}
-  .hero-img{position:relative;inset:auto;height:auto;object-fit:initial;display:block}
-  .hero-text{position:absolute;left:0;right:0;bottom:0;padding:0 5vw 14vw}
-  .scroll-hint{display:none}
 }
